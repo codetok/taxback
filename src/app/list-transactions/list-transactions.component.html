@@ -1,0 +1,32 @@
+<div class="table-container mat-elevation-z8">
+  <mat-table #table [dataSource]="transactions_array" class="example-table"
+  matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="user">
+      <mat-header-cell *matHeaderCellDef> user </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.user}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef> amount </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="currency">
+      <mat-header-cell *matHeaderCellDef> currency </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.currency}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="txn_date">
+        <mat-header-cell *matHeaderCellDef
+                         mat-sort-header
+                         disableClear="true">
+          Created
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.txn_date | date }}</mat-cell>
+      </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+ 
+</div>
