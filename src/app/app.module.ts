@@ -5,10 +5,10 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 
-//all custom modules goes here
+// all custom modules goes here
 
 import { ListTransactionsModule } from './list-transactions/list-transactions.module';
-
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { ListTransactionsModule } from './list-transactions/list-transactions.mo
     BrowserModule,
     RouterModule.forRoot([]),
     BrowserAnimationsModule,
-    ListTransactionsModule,
+    ListTransactionsModule, // main module
+    ComponentsModule, // all the popups are present in this module
     HttpModule
   ],
   providers: [],

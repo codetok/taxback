@@ -1,32 +1,56 @@
-<div class="table-container mat-elevation-z8">
-  <mat-table #table [dataSource]="transactions_array" class="example-table"
-  matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
+<div class="table-container mat-elevation-z8" >
+  <div class="table-header">
+    <mat-form-field>
+      <input matInput value="priya@gmail.com" (keyup)="applyFilter($event.target.value)" placeholder="enter user ">
+       
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="create()">Create</button>
+  </div>
+  <br/>
+  <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+  <mat-table #table [dataSource]="transactions_array" matSort>
     <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> id </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="user">
-      <mat-header-cell *matHeaderCellDef> user </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header > user </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.user}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="amount">
-      <mat-header-cell *matHeaderCellDef> amount </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> amount </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="currency">
-      <mat-header-cell *matHeaderCellDef> currency </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header > currency </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.currency}} </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="txn_date">
-        <mat-header-cell *matHeaderCellDef
-                         mat-sort-header
-                         disableClear="true">
-          Created
+    <ng-container matColumnDef="txn_date" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header disableClear="true">
+        Created
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.txn_date | date }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+          Actions
         </mat-header-cell>
-        <mat-cell *matCellDef="let row">{{ row.txn_date | date }}</mat-cell>
+        <mat-cell *matCellDef="let row">
+            <div class="button-row" >
+                <button mat-icon-button (click)="view(row)">
+                    <mat-icon aria-label="Example icon-button with a heart icon">visibility</mat-icon>
+                  </button>
+                <button mat-icon-button (click)="edit(row)">
+                  <mat-icon aria-label="Example icon-button with a heart icon">mode_edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn"  (click)="delete(row)">
+                  <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                </button>
+            </div>
+        </mat-cell>
       </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
- 
+
 </div>

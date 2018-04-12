@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   min-width: 300px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .mat-table {
@@ -11,4 +13,15 @@
 
 .mat-header-cell.mat-sort-header-sorted {
   color: black;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.table-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+.mat-column-select {
+  overflow: visible;
 }

@@ -5,6 +5,5 @@ export class Transactions {
         public amount: number,
         public currency: string,
         public txn_date: string ) {
-
     }
 }

@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Edit</mat-card-title>
+    <mat-card-subtitle> </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <ul *ngIf="error" style="color:red">
+        <li *ngFor="let e of error"> {{e}}</li>
+    </ul>
+    <form [formGroup]="transactionForm" (ngSubmit)="editTransaction()">
+      <mat-form-field class="width-50">
+        <input matInput formControlName="user" placeholder="user">
+      </mat-form-field>
+      <mat-form-field class="width-50">
+        <input matInput formControlName="amount" placeholder="amount">
+      </mat-form-field>
+      <mat-form-field class="width-50">
+        <input matInput formControlName="currency" placeholder="currency">
+      </mat-form-field>
+      <mat-form-field class="width-50">
+        <input matInput formControlName="txn_date" placeholder="txn_date">
+      </mat-form-field>
+      <button type="submit" [disabled]="!transactionForm.valid" mat-raised-button class="submit" color="accent">Update</button>
+      <button mat-raised-button [disabled]="!transactionForm.valid" (click)="dialogRef.close()" color="warn">Cancel</button>
+    </form>
+  </mat-card-content>
+
+</mat-card>
